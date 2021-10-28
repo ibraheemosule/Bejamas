@@ -1,0 +1,9 @@
+@import "./colors";
+@import "./customStyles";
+
+.hero {
+  h1 {
+    font-size: 1.4rem;
+    margin: $pryPadding 0;
+  }
+}

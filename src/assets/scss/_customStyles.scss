@@ -1,0 +1,12 @@
+//BASE STYLES
+
+$pryPadding: 1.2em;
+
+//MIXINS
+@mixin photoOfDayText {
+  font: {
+    weight: 400;
+    size: 1.125rem;
+  }
+  line-height: 1.7rem;
+}

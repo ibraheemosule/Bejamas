@@ -1,0 +1,29 @@
+@import "./colors";
+@import "./customStyles";
+
+.header {
+  color: $pryTextColor;
+  margin: 0 0 $pryPadding 0;
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: $pryPadding;
+
+    &-logo {
+      width: 85px;
+      height: auto;
+    }
+
+    &-cart {
+      &__img {
+        width: 32px;
+        height: auto;
+      }
+    }
+  }
+  &__line {
+    background-color: $color;
+    height: 2px;
+    margin: 0 -1.2rem;
+  }
+}

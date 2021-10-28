@@ -1,0 +1,8 @@
+@import "./assets/scss/resets";
+@import "./assets/scss/colors";
+
+body {
+  background: $bgColor;
+  padding: 1.2rem;
+  // padding: 2.5rem 5.2rem;
+}
