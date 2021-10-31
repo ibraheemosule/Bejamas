@@ -1,0 +1,145 @@
+@import "./colors";
+@import "./customStyles";
+
+.sidebar {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100vw;
+  z-index: 2;
+  background: #fff;
+  margin: 0 -1.2rem;
+  padding: 1.2rem;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    margin: 1.7rem 0;
+    button {
+      outline: none;
+      border: none;
+      background: transparent;
+
+      img {
+        width: 10px;
+      }
+    }
+  }
+
+  .categories {
+    margin: 0;
+    padding: 0;
+    .container {
+      display: block;
+      position: relative;
+      padding-left: 35px;
+      margin: $pryPadding 0;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+      input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+    }
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-color: #fff;
+      border: 2px solid black;
+    }
+    .container:hover input ~ .checkmark {
+      background-color: #ccc;
+    }
+
+    .container input:checked ~ .checkmark {
+      background-color: #2196f3;
+    }
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+    .container input:checked ~ .checkmark:after {
+      display: block;
+    }
+
+    .container .checkmark:after {
+      left: 5px;
+      top: 2px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+
+    .line {
+      background-color: $color;
+      height: 2px;
+      margin: 1.5rem 0;
+      width: 70%;
+    }
+
+    .reset {
+      display: flex;
+      justify-content: space-around;
+      padding: 2em 0;
+      border-top: 2px solid gray;
+
+      button {
+        font-size: 1.2em;
+        width: 100%;
+        margin: 0 10px;
+        text-align: center;
+        padding: 0.2em 1em;
+        background: black;
+        color: white;
+      }
+      .clear {
+        color: black;
+        background: white;
+      }
+    }
+  }
+}
+
+.hide {
+  display: none;
+}
+
+@include min600 {
+  .sidebar {
+    position: static;
+    z-index: 0;
+    margin: 0;
+    padding-left: 0;
+  }
+  .hide {
+    display: block;
+    width: 30%;
+    min-width: 30%;
+  }
+  .reset {
+    display: none !important;
+  }
+  @include min800 {
+    .hide {
+      width: 20%;
+      min-width: 20%;
+    }
+  }
+}

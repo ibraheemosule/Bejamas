@@ -6,7 +6,28 @@ $pryPadding: 1.2em;
 @mixin photoOfDayText {
   font: {
     weight: 400;
-    size: 1.125rem;
+    size: 0.8em;
   }
-  line-height: 1.7rem;
+  line-height: 1rem;
+
+  @include min600 {
+    font-size: 0.8rem;
+    line-height: 1.7rem;
+  }
+
+  @include min800 {
+    font-size: 1.123rem;
+  }
+}
+
+@mixin min600 {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin min800 {
+  @media (min-width: 800px) {
+    @content;
+  }
 }

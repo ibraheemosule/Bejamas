@@ -1,0 +1,101 @@
+@import "./colors";
+@import "./customStyles";
+
+@keyframes show {
+  from {
+    margin-bottom: -50px;
+  }
+  to {
+    margin-bottom: 0;
+  }
+}
+
+.hovered {
+  animation: show 0.5s;
+}
+.product {
+  margin: 3rem -0.5em;
+  box-shadow: 1px 1px 5px rgba(209, 205, 205, 0.144);
+
+  &__img {
+    position: relative;
+    margin: $pryPadding 0;
+    overflow: hidden;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 500px;
+
+      @include min600 {
+        height: 300px;
+      }
+    }
+
+    .caption {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      height: 30px;
+      top: 0;
+      left: 0;
+      padding: 1.2em;
+      background: white;
+      font-size: smaller;
+    }
+    button {
+      position: absolute;
+      border: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      padding: 1em 1.2em;
+      background: black;
+      color: white;
+      margin-bottom: -50px;
+      transition: all 0.2s ease-in;
+      cursor: pointer;
+
+      &:hover {
+        background: rgb(32, 32, 32);
+      }
+      &:active {
+        background: white;
+      }
+    }
+  }
+
+  &__details {
+    .others {
+      h3 {
+        margin: $pryPadding 0;
+        font-size: 1em;
+      }
+      .details {
+        margin: $pryPadding 0;
+
+        h3 {
+          margin: 0.7rem 0;
+          font-size: 1.2em;
+        }
+        p {
+          color: $textColor;
+          margin: 0.7rem 0;
+          font-size: 0.8em;
+        }
+        .price {
+          font-size: 1em;
+        }
+      }
+    }
+  }
+  @include min600 {
+    width: 40%;
+    margin: 10px;
+  }
+  @include min800 {
+    width: 27%;
+    margin: 10px;
+  }
+}

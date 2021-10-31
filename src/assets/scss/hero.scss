@@ -2,8 +2,172 @@
 @import "./customStyles";
 
 .hero {
+  margin: $pryPadding -0.5em;
+  display: flex;
+  flex-direction: column;
+
+  @include min600 {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: $pryPadding 0;
+  }
   h1 {
     font-size: 1.4rem;
+    margin: 3rem 0 2rem;
+    text-align: left;
+
+    @include min600 {
+      order: 1;
+    }
+  }
+
+  &__img {
+    position: relative;
     margin: $pryPadding 0;
+
+    @include min600 {
+      order: 3;
+    }
+
+    img {
+      object-fit: cover;
+      max-width: 100%;
+      height: 100vw - 40vw;
+
+      @include min800 {
+        height: auto;
+      }
+    }
+
+    .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 1em 1.2em;
+      background: white;
+      font-size: smaller;
+
+      @include min600 {
+        padding: 1em 2em;
+        font-size: larger;
+      }
+    }
+  }
+  .cart-btn {
+    width: 100%;
+    text-align: center;
+    padding: 1em 1.2em;
+    background: black;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.795);
+    }
+
+    @include min600 {
+      order: 2;
+      width: initial;
+      margin: 2.5rem 0 2rem;
+      margin-left: auto;
+      padding: 1em 4em;
+    }
+  }
+  .about {
+    &__pet {
+      margin: $pryPadding 0;
+
+      h3 {
+        font-size: 1em;
+        margin: $pryPadding 0;
+      }
+
+      h5 {
+        display: none;
+        color: $textColor;
+      }
+
+      p {
+        @include photoOfDayText;
+        color: $textColor;
+      }
+    }
+    &__others {
+      margin: $pryPadding 0;
+      h3 {
+        margin: $pryPadding 0;
+        font-size: 1em;
+      }
+      .img__cards {
+        display: flex;
+        justify-content: space-between;
+        height: 100px;
+
+        img {
+          width: 30%;
+          object-fit: cover;
+          transition: all 0.2s ease-in-out;
+        }
+      }
+      .details {
+        margin: $pryPadding 0;
+
+        h3 {
+          margin: $pryPadding 0;
+          font-size: 1em;
+        }
+        p {
+          color: $textColor;
+          margin: $pryPadding 0;
+        }
+      }
+
+      @include min600 {
+        .img__cards {
+          img:hover {
+            transform: scale(1.05);
+            box-shadow: 1px 1px 5px #1d1c1c60;
+            cursor: pointer;
+          }
+        }
+      }
+
+      @include min800 {
+        width: 40%;
+
+        .img__cards {
+          height: 200px;
+        }
+      }
+    }
+
+    @include min600 {
+      order: 4;
+      display: flex;
+      justify-content: space-between;
+
+      &__pet {
+        width: 50%;
+        padding-right: 3rem;
+      }
+      &__others {
+        h3,
+        p {
+          text-align: right;
+        }
+      }
+    }
+  }
+  &__line {
+    background-color: $color;
+    height: 2px;
+    margin: 0 -0.7rem;
+
+    @include min600 {
+      order: 5;
+      width: 100%;
+      margin: 0;
+    }
   }
 }

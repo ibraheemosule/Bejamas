@@ -1,8 +1,17 @@
 @import "./assets/scss/resets";
 @import "./assets/scss/colors";
+@import "./assets/scss/customStyles";
 
 body {
   background: $bgColor;
   padding: 1.2rem;
-  // padding: 2.5rem 5.2rem;
+  max-width: 1500px;
+
+  @include min600 {
+    padding: 2.5rem;
+  }
+
+  @include min800 {
+    padding: 2.5rem 3rem;
+  }
 }

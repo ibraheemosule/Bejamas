@@ -12,12 +12,101 @@
     &-logo {
       width: 85px;
       height: auto;
+
+      @include min600 {
+        width: 150px;
+      }
     }
 
     &-cart {
+      cursor: pointer;
+      position: relative;
       &__img {
         width: 32px;
         height: auto;
+
+        @include min600 {
+          width: 50px;
+        }
+        &:hover {
+          transform: scale(1.02);
+        }
+      }
+      span {
+        padding: 0.1em 0.2em;
+        color: #fff;
+        background: black;
+      }
+      .cart-list {
+        position: absolute;
+        display: none;
+        margin-top: 1.2rem;
+        top: 100%;
+        right: 0;
+        width: 300px;
+        border: 2px solid $color;
+        padding: 1em 1.5em;
+        z-index: 2;
+        background-color: white;
+        text-align: right;
+
+        @include min800 {
+          width: 440px;
+        }
+
+        .close {
+          margin: 0 0 1em auto;
+          width: 15px;
+        }
+        .selectedItem {
+          display: flex;
+          margin-bottom: 20px;
+          text-align: left;
+          div {
+            width: 60%;
+
+            .product-name {
+              margin: 0 0 1em 0;
+              font-size: 1.2em;
+            }
+            .product-price {
+              color: $pryTextColor;
+              font-size: 1.2em;
+            }
+          }
+          .item-image {
+            width: 40%;
+            height: auto;
+            object-fit: cover;
+          }
+          .remove-item {
+            width: 20px;
+            align-self: flex-start;
+            margin-left: 10px;
+          }
+        }
+        .no-items {
+          text-align: center;
+        }
+
+        .line {
+          background-color: $color;
+          height: 2px;
+          margin: $pryPadding 0;
+        }
+        .cart-btn {
+          width: 100%;
+          text-align: center;
+          padding: 1em 1.2em;
+          background: white;
+          cursor: pointer;
+          transition: all 0.2s ease-in-out;
+
+          &:hover {
+            background: rgba(0, 0, 0, 0.795);
+            color: white;
+          }
+        }
       }
     }
   }
@@ -25,5 +114,9 @@
     background-color: $color;
     height: 2px;
     margin: 0 -1.2rem;
+
+    @include min600 {
+      margin: 0;
+    }
   }
 }
