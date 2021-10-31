@@ -91,7 +91,7 @@ export const products = [
     },
   },
   {
-    name: "Red Bench",
+    name: "Red Benc",
     category: "people",
     price: 3.89,
     currency: "USD",
@@ -104,7 +104,7 @@ export const products = [
     details: null,
   },
   {
-    name: "Egg Balloon",
+    name: "Egg Balloo",
     category: "food",
     price: 93.89,
     currency: "USD",
@@ -130,7 +130,7 @@ export const products = [
     details: null,
   },
   {
-    name: "Architecture",
+    name: "Architectur",
     category: "landmarks",
     price: 101,
     currency: "USD",
@@ -147,7 +147,7 @@ export const products = [
     details: null,
   },
   {
-    name: "Samurai King Resting",
+    name: "Samurai King Restin",
     category: "landmarks",
     price: 101,
     currency: "USD",
@@ -182,7 +182,7 @@ export const products = [
     },
   },
   {
-    name: "Red Bench",
+    name: "Red Ben",
     category: "people",
     price: 3.89,
     currency: "USD",
@@ -195,7 +195,7 @@ export const products = [
     details: null,
   },
   {
-    name: "Egg Balloon",
+    name: "Egg Ballo",
     category: "food",
     price: 93.89,
     currency: "USD",
@@ -208,7 +208,7 @@ export const products = [
     details: null,
   },
   {
-    name: "Man",
+    name: "Ma",
     category: "people",
     price: 100,
     currency: "USD",
@@ -221,7 +221,7 @@ export const products = [
     details: null,
   },
   {
-    name: "Architecture",
+    name: "Architectu",
     category: "landmarks",
     price: 101,
     currency: "USD",
@@ -238,7 +238,7 @@ export const products = [
     details: null,
   },
   {
-    name: "Samurai King Resting",
+    name: "Samurai King Resti",
     category: "landmarks",
     price: 101,
     currency: "USD",
