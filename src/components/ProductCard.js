@@ -1,5 +1,4 @@
 import "../assets/scss/productCard.scss";
-import dogImage from "../assets/images/dogg.jpg";
 import { Context } from "../Context";
 import { useContext } from "react";
 
@@ -21,8 +20,10 @@ const ProductCard = (props) => {
 
   const addItem = () => {
     let items = [...page];
+    const names = items.map((val) => val.name);
+    const cartNames = [...cartItems].map((val) => val.name);
     items = items.splice(index, 1);
-    if (!cartItems.includes(items[0])) {
+    if (!cartNames.includes(items[0].name)) {
       setCartItems([...cartItems, ...items]);
     }
   };
@@ -34,8 +35,8 @@ const ProductCard = (props) => {
         onMouseOver={mouseover}
         onMouseLeave={mouseleave}
       >
-        <img src={dogImage} alt="product" />
-        <div className="caption">Best Seller</div>
+        <img src={val.image.src} alt="product" />
+        {val.bestseller ? <div className="caption">Best Seller</div> : ""}
         <button className="add-to-cart" onClick={addItem}>
           ADD TO CART
         </button>
@@ -44,9 +45,9 @@ const ProductCard = (props) => {
       <section className="product__details">
         <div className="others">
           <div className="details">
-            <p>People</p>
-            <h3>Red Bench</h3>
-            <p className="price">$3.89 {val}</p>
+            <p>{val.category}</p>
+            <h3>{val.name}</h3>
+            <p className="price">$ {val.price}</p>
           </div>
         </div>
       </section>

@@ -76,13 +76,14 @@
           }
           .item-image {
             width: 40%;
-            height: auto;
-            object-fit: cover;
+            height: 100px;
+            object-fit: fill;
           }
           .remove-item {
             width: 20px;
             align-self: flex-start;
-            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 2px;
           }
         }
         .no-items {

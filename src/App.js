@@ -4,11 +4,11 @@ import Hero from "./components/Hero.js";
 import Products from "./components/Products.js";
 import { Context } from "./Context.js";
 import { useState } from "react";
+import { products } from "./dataBase.js";
 
 function App() {
-  const v = ["one", "two", "three", "four", "five", "six", "seven", "eight"];
-  let [state, setState] = useState(v);
-  let [cartItems, setCartItems] = useState(v);
+  let [state, setState] = useState(products);
+  let [cartItems, setCartItems] = useState([]);
   let [page, setPage] = useState([...state]);
 
   function pagination({ arr, pageSize, pageNumber }) {
@@ -33,6 +33,7 @@ function App() {
         page,
         setPage,
         pagination,
+        products,
       ]}
     >
       <div className="App">

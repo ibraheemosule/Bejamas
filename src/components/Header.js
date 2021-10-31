@@ -19,7 +19,6 @@ const Header = () => {
     const item = [...cartItems];
     item.splice(i, 1);
     setCartItems(item);
-    console.log(cartItems);
   };
 
   return (
@@ -43,17 +42,17 @@ const Header = () => {
             />
             {cartItems.map((val, i) => (
               <div className="selectedItem" key={i}>
-                <div>
-                  <h5 className="product-name">Samurai {val}</h5>
-                  <p className="product-price">$1000.00</p>
-                </div>
-                <img className="item-image" src={dogg} alt="item" />
                 <img
                   className="remove-item"
                   onClick={() => deleteItem(i)}
                   src={remove}
                   alt="remove item"
                 />
+                <div>
+                  <h5 className="product-name">{val.name}</h5>
+                  <p className="product-price">${val.price}</p>
+                </div>
+                <img className="item-image" src={val.image.src} alt="item" />
               </div>
             ))}
             {!cartItems.length ? (

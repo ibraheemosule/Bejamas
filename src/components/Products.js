@@ -18,9 +18,9 @@ const Products = () => {
   useEffect(() => {
     let val = [...page];
     if (sortValue === "alphabetically") {
-      val = val.sort((a, b) => (b < a ? 1 : -1));
+      val = val.sort((a, b) => (b.name < a.name ? 1 : -1));
     } else if (sortValue === "price") {
-      val = val.sort((a, b) => (b > a ? 1 : -1));
+      val = val.sort((a, b) => (b.price > a.price ? 1 : -1));
     }
     setPage([...val]);
     setPag(paginate);
@@ -54,20 +54,57 @@ const Products = () => {
         </div>
       </div>
       <div className="products__list">
-        <Checkboxes show={show} showSorting={showSorting} />
+        <Checkboxes
+          show={show}
+          showSorting={showSorting}
+          pag={pag}
+          setPag={setPag}
+        />
         <div className="products-card">
+          {pag.length ? (
+            ""
+          ) : (
+            <h1 style={{ position: "absolute", top: "50%", left: "50%" }}>
+              NO RESULT FOUND{" "}
+            </h1>
+          )}
           {pag.map((val, index) => (
             <ProductCard key={index} index={index} val={val} />
           ))}
-          <div className="pagination">
-            <span onClick={() => (num > 1 ? setNum(--num) : null)}>{"<"}</span>
-            {[...Array(numbers)].map((val, i) => (
-              <span key={i} className="numbers" onClick={() => setNum(i + 1)}>
-                {i + 1}
+          {!pag.length ? (
+            ""
+          ) : (
+            <div className="pagination">
+              <span
+                style={{
+                  color: num > 1 ? "black" : "gray",
+                }}
+                onClick={() => (num > 1 ? setNum(--num) : null)}
+              >
+                {"<"}
               </span>
-            ))}
-            <span onClick={() => (num > 0 ? setNum(++num) : null)}>{">"}</span>
-          </div>
+              {[...Array(numbers)].map((val, i) => (
+                <span
+                  key={i}
+                  className="numbers"
+                  style={{ color: num === i + 1 ? "black" : "gray" }}
+                  onClick={() => setNum(i + 1)}
+                >
+                  {i + 1}
+                </span>
+              ))}
+              <span
+                onClick={() =>
+                  num > 0 && num < numbers ? setNum(++num) : null
+                }
+                style={{
+                  color: num > 0 && num < numbers ? "black" : "gray",
+                }}
+              >
+                {">"}
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </section>
