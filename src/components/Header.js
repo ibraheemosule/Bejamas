@@ -1,6 +1,5 @@
 import "../assets/scss/header.scss";
 import logo from "../assets/images/logo.svg";
-import dogg from "../assets/images/dogg.jpg";
 import remove from "../assets/images/trash-outline.svg";
 import cancel from "../assets/images/cancel.svg";
 import cart from "../assets/images/shopping-cart.svg";

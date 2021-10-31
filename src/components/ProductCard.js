@@ -20,7 +20,6 @@ const ProductCard = (props) => {
 
   const addItem = () => {
     let items = [...page];
-    const names = items.map((val) => val.name);
     const cartNames = [...cartItems].map((val) => val.name);
     items = items.splice(index, 1);
     if (!cartNames.includes(items[0].name)) {

@@ -1,5 +1,4 @@
 import "../assets/scss/hero.scss";
-import dogImage from "../assets/images/dogg.jpg";
 import first from "../assets/images/first.png";
 import second from "../assets/images/second.png";
 import third from "../assets/images/third.png";

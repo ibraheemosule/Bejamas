@@ -5,7 +5,7 @@ export const products = [
     price: 3.89,
     currency: "USD",
     image: {
-      src: "https://images.pexels.com/photos/1223649/pexels-photo-1223649.jpeg?auto=compress&cs=tinysrgb&h=350",
+      src: "https://images.pexels.com/photos/1005417/pexels-photo-1005417.jpeg?auto=compress&cs=tinysrgb&h=350",
       alt: "beach",
     },
     bestseller: true,
@@ -61,7 +61,7 @@ export const products = [
     price: 101,
     currency: "USD",
     image: {
-      src: "https://images.pexels.com/photos/916337/pexels-photo-916337.jpeg?auto=compress&cs=tinysrgb&h=350",
+      src: "https://images.pexels.com/photos/1223649/pexels-photo-1223649.jpeg",
       alt: "samurai king resting",
     },
     bestseller: false,

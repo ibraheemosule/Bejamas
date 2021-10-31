@@ -61,13 +61,7 @@ const Products = () => {
           setPag={setPag}
         />
         <div className="products-card">
-          {pag.length ? (
-            ""
-          ) : (
-            <h1 style={{ position: "absolute", top: "50%", left: "50%" }}>
-              NO RESULT FOUND{" "}
-            </h1>
-          )}
+          {pag.length ? "" : <h1 className="no-result">NO RESULT FOUND </h1>}
           {pag.map((val, index) => (
             <ProductCard key={index} index={index} val={val} />
           ))}

@@ -5,6 +5,7 @@ import Products from "./components/Products.js";
 import { Context } from "./Context.js";
 import { useState } from "react";
 import { products } from "./dataBase.js";
+import axios from "axios";
 
 function App() {
   let [state, setState] = useState(products);

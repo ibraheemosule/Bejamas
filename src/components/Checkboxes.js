@@ -4,8 +4,8 @@ import { useContext, useEffect, useState } from "react";
 import { Context } from "../Context";
 
 const Products = (props) => {
-  let { show, showSorting, pag, setPag } = props;
-  const [state, , , , page, setPage, pagination] = useContext(Context);
+  let { show, showSorting, setPag } = props;
+  const [state, , , , , setPage, pagination] = useContext(Context);
 
   const checkboxes = [
       "people",
@@ -146,10 +146,12 @@ const Products = (props) => {
           ))}
         </div>
         <div className="reset">
-          <button className="clear" onClick={clearCheckboxes}>
+          <button className="clear" onClick={showSorting}>
             Clear
           </button>
-          <button className="save">Save</button>
+          <button className="save" onClick={showSorting}>
+            Save
+          </button>
         </div>
       </form>
     </aside>
