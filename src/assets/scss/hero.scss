@@ -13,11 +13,12 @@
   }
   h1 {
     font-size: 1.4rem;
-    margin: 3rem 0 2rem;
+    margin: 1rem 0 0;
     text-align: left;
 
     @include min600 {
       order: 1;
+      margin: 3rem 0 2rem;
     }
   }
 
@@ -33,7 +34,7 @@
     img {
       object-fit: cover;
       min-width: 100%;
-      max-height: 40vw;
+      max-height: 55vw;
       background: gray;
 
       @include min800 {
@@ -104,12 +105,17 @@
       .img__cards {
         display: flex;
         justify-content: space-between;
-        height: 100px;
+        height: 150px;
 
         img {
           width: 30%;
           object-fit: cover;
           transition: all 0.2s ease-in-out;
+        }
+        img:hover {
+          transform: scale(1.05);
+          box-shadow: 1px 1px 5px #1d1c1c60;
+          cursor: pointer;
         }
       }
       .details {
@@ -127,11 +133,7 @@
 
       @include min600 {
         .img__cards {
-          img:hover {
-            transform: scale(1.05);
-            box-shadow: 1px 1px 5px #1d1c1c60;
-            cursor: pointer;
-          }
+          height: 100px;
         }
       }
 
