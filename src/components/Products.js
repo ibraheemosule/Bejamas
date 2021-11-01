@@ -26,7 +26,8 @@ const Products = () => {
     setPag(paginate);
   }, [sortValue, num]);
 
-  const showSorting = () => {
+  const showSorting = (e) => {
+    e.preventDefault();
     setShow(() => !show);
   };
 

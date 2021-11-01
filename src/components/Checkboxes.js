@@ -3,8 +3,7 @@ import cancel from "../assets/images/cancel.svg";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../Context";
 
-const Products = (props) => {
-  let { show, showSorting, setPag } = props;
+const Products = ({ show, showSorting, setPag }) => {
   const [state, , , , , setPage, pagination] = useContext(Context);
 
   const checkboxes = [
@@ -29,14 +28,6 @@ const Products = (props) => {
     nature: false,
   });
 
-  const clearCheckboxes = (e) => {
-    e.preventDefault();
-    const checkmark = document.getElementsByClassName("checkmark");
-    for (let el of checkmark) {
-      el.checked = false;
-    }
-  };
-
   const changeFilter = (e) => {
     setFilters({
       ...filters,
@@ -60,23 +51,24 @@ const Products = (props) => {
       console.log(filters[val]);
       if (filters[val].length > 5) {
         console.log("i am for string");
-
-        if (filters[val] === "lower than $20") {
-          items.map((item) => (item.price < 20 ? newArr.push(item) : null));
-        }
-        if (filters[val] === "$20 - $100") {
-          console.log("lol");
-          items.map((item) =>
-            item.price > 19 && item.price < 101 ? newArr.push(item) : null
-          );
-        }
-        if (filters[val] === "$100 - $200") {
-          items.map((item) =>
-            item.price > 99 && item.price < 201 ? newArr.push(item) : null
-          );
-        }
-        if (filters[val] === "more than $200") {
-          items.map((item) => (item.price > 200 ? newArr.push(item) : null));
+        switch (filters[val]) {
+          case "lower than $20":
+            items.map((item) => (item.price < 20 ? newArr.push(item) : null));
+            break;
+          case "$20 - $100":
+            items.map((item) =>
+              item.price > 19 && item.price < 101 ? newArr.push(item) : null
+            );
+            break;
+          case "$100 - $200":
+            items.map((item) =>
+              item.price > 99 && item.price < 201 ? newArr.push(item) : null
+            );
+            break;
+          case "more than $200":
+            items.map((item) => (item.price > 200 ? newArr.push(item) : null));
+            break;
+          default:
         }
       }
 
@@ -146,10 +138,10 @@ const Products = (props) => {
           ))}
         </div>
         <div className="reset">
-          <button className="clear" onClick={showSorting}>
+          <button className="clear" onClick={(e) => showSorting(e)}>
             Clear
           </button>
-          <button className="save" onClick={showSorting}>
+          <button className="save" onClick={(e) => showSorting(e)}>
             Save
           </button>
         </div>

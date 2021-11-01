@@ -2,8 +2,7 @@ import "../assets/scss/productCard.scss";
 import { Context } from "../Context";
 import { useContext } from "react";
 
-const ProductCard = (props) => {
-  const { index, val } = props;
+const ProductCard = ({ index, val }) => {
   const [, , cartItems, setCartItems, page] = useContext(Context);
 
   const mouseover = () => {
