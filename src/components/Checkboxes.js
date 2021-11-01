@@ -48,9 +48,7 @@ const Products = ({ show, showSorting, setPag }) => {
       returnArr = [];
 
     for (let val in filters) {
-      console.log(filters[val]);
       if (filters[val].length > 5) {
-        console.log("i am for string");
         switch (filters[val]) {
           case "lower than $20":
             items.map((item) => (item.price < 20 ? newArr.push(item) : null));
@@ -76,7 +74,7 @@ const Products = ({ show, showSorting, setPag }) => {
 
       if (filters[val] && typeof filters[val] === "boolean") {
         if (!newArr.length) newArr = [...state];
-        console.log(returnArr);
+
         newArr.map((item) =>
           item.category === val ? returnArr.push(item) : null
         );

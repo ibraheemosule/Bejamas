@@ -11,7 +11,6 @@ const Hero = () => {
   const addItem = () => {
     const cartNames = [...cartItems].map((val) => val.name);
     const itemName = product[4].name;
-    console.log(itemName, cartNames);
     if (!cartNames.includes(itemName)) {
       setCartItems([...cartItems, product[4]]);
     }
