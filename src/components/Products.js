@@ -23,7 +23,7 @@ const Products = () => {
       val = val.sort((a, b) => (b.price > a.price ? 1 : -1));
     }
     setPage([...val]);
-    setPag(paginate);
+    setPag([...pagination({ arr: [...val], pageSize: 6, pageNumber: num })]);
   }, [sortValue, num]);
 
   const showSorting = (e) => {
