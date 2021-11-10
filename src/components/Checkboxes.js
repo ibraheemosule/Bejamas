@@ -18,7 +18,6 @@ const Products = ({ show, showSorting, setPag }) => {
     radios = ["lower than $20", "$20 - $100", "$100 - $200", "more than $200"];
 
   let [filters, setFilters] = useState({
-    price: "null",
     people: false,
     premium: false,
     pets: false,
@@ -26,6 +25,7 @@ const Products = ({ show, showSorting, setPag }) => {
     landmarks: false,
     cities: false,
     nature: false,
+    price: "null"
   });
 
   const changeFilter = (e) => {
@@ -44,44 +44,61 @@ const Products = ({ show, showSorting, setPag }) => {
 
   useEffect(() => {
     let items = [...state],
-      newArr = [],
-      returnArr = [];
+    i = 0,
+      newArr = []
 
     for (let val in filters) {
+
+        if(typeof filters[val] === "boolean" && filters[val]) {
+         const filteredItems =  items.filter(item => item.category === val)
+         newArr.push(...filteredItems)
+        }
+
+        if(!newArr.length && i === 7) {
+         newArr = [...state]
+        }
+
       if (filters[val].length > 5) {
+        let filteredItems;
         switch (filters[val]) {
           case "lower than $20":
-            items.map((item) => (item.price < 20 ? newArr.push(item) : null));
+            filteredItems = newArr.filter((item) => (item.price < 20));
+            newArr = [...filteredItems]
             break;
           case "$20 - $100":
-            items.map((item) =>
-              item.price > 19 && item.price < 101 ? newArr.push(item) : null
+            filteredItems = newArr.filter((item) =>
+              item.price > 19 && item.price < 101
             );
+            newArr = [...filteredItems]
             break;
           case "$100 - $200":
-            items.map((item) =>
-              item.price > 99 && item.price < 201 ? newArr.push(item) : null
+            filteredItems = newArr.filter((item) =>
+              item.price > 99 && item.price < 201
             );
+            newArr = [...filteredItems]
             break;
           case "more than $200":
-            items.map((item) => (item.price > 200 ? newArr.push(item) : null));
+            filteredItems = newArr.filter((item) => (item.price > 200));
+            newArr = [...filteredItems]
             break;
           default:
         }
       }
 
-      if (!returnArr.length) returnArr = [...newArr];
+      i++
 
-      if (filters[val] && typeof filters[val] === "boolean") {
-        if (!newArr.length) newArr = [...state];
+      // if (!returnArr.length) returnArr = [...newArr];
 
-        newArr.map((item) =>
-          item.category === val ? returnArr.push(item) : null
-        );
-      }
+      // if (filters[val] && typeof filters[val] === "boolean") {
+      //   if (!newArr.length) newArr = [...state];
+
+      //   newArr.map((item) =>
+      //     item.category === val ? returnArr.push(item) : null
+      //   );
+      // }
     }
-    setPage(returnArr);
-    setPag([...pagination({ arr: returnArr, pageSize: 6, pageNumber: 1 })]);
+    setPage(newArr);
+    setPag([...pagination({ arr: newArr, pageSize: 6, pageNumber: 1 })]);
   }, [
     filters.people,
     filters.premium,
