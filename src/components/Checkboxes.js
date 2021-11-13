@@ -25,7 +25,7 @@ const Products = ({ show, showSorting, setPag }) => {
     landmarks: false,
     cities: false,
     nature: false,
-    price: false
+    price: false,
   });
 
   const changeFilter = (e) => {
@@ -43,62 +43,72 @@ const Products = ({ show, showSorting, setPag }) => {
   };
 
   const clearFilters = () => {
-    const filterItems = Object.keys(filters)
-    const stateObject = {...filters}
-    for(let item of filterItems){
-        stateObject[item] = false
+    const filterItems = Object.keys(filters);
+    const stateObject = { ...filters };
+    for (let item of filterItems) {
+      stateObject[item] = false;
     }
     setFilters({
-      ...stateObject
-    })
-  }
+      ...stateObject,
+    });
+  };
 
   useEffect(() => {
     let items = [...state],
-    i = 0,
-      newArr = []
+      i = 0,
+      newArr = [];
 
     for (let val in filters) {
+      if (typeof filters[val] === "boolean" && filters[val]) {
+        const filteredItems = items.filter((item) => item.category === val);
+        newArr.push(...filteredItems);
+      }
 
-        if(typeof filters[val] === "boolean" && filters[val]) {
-         const filteredItems =  items.filter(item => item.category === val)
-         newArr.push(...filteredItems)
-        }
-
-        if(!newArr.length && i === 7) {
-          // eslint-disable-next-line no-unused-vars
-          let filterCheck = Object.entries(filters).some((array) => array[1] === true ) ? null : newArr = [...state]
-
-        }
+      if (!newArr.length && i === 7) {
+        // eslint-disable-next-line no-unused-vars
+        let filterCheck = Object.entries(filters).some(
+          (array) => array[1] === true
+        )
+          ? null
+          : (newArr = [...state]);
+      }
 
       if (filters[val].length > 5) {
         let filteredItems;
         switch (filters[val]) {
           case "lower than $20":
-            filteredItems = newArr.filter((item) => (item.price < 20));
-            newArr = [...filteredItems]
+            filteredItems = newArr.filter((item) => item.price < 20);
+            newArr = [...filteredItems];
+
             break;
+
           case "$20 - $100":
-            filteredItems = newArr.filter((item) =>
-              item.price > 19 && item.price < 101
+            filteredItems = newArr.filter(
+              (item) => item.price > 19 && item.price < 101
             );
-            newArr = [...filteredItems]
+            newArr = [...filteredItems];
+
             break;
+
           case "$100 - $200":
-            filteredItems = newArr.filter((item) =>
-              item.price > 99 && item.price < 201
+            filteredItems = newArr.filter(
+              (item) => item.price > 99 && item.price < 201
             );
-            newArr = [...filteredItems]
+            newArr = [...filteredItems];
+
             break;
+
           case "more than $200":
-            filteredItems = newArr.filter((item) => (item.price > 200));
-            newArr = [...filteredItems]
+            filteredItems = newArr.filter((item) => item.price > 200);
+            newArr = [...filteredItems];
+
             break;
+
           default:
         }
       }
 
-      i++
+      i++;
 
       // if (!returnArr.length) returnArr = [...newArr];
 
@@ -166,7 +176,13 @@ const Products = ({ show, showSorting, setPag }) => {
           ))}
         </div>
         <div className="reset">
-          <button className="clear" onClick={(e) => {showSorting(e); clearFilters()}}>
+          <button
+            className="clear"
+            onClick={(e) => {
+              showSorting(e);
+              clearFilters();
+            }}
+          >
             Clear
           </button>
           <button className="save" onClick={(e) => showSorting(e)}>
