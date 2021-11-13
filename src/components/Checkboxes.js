@@ -25,7 +25,7 @@ const Products = ({ show, showSorting, setPag }) => {
     landmarks: false,
     cities: false,
     nature: false,
-    price: "null"
+    price: false
   });
 
   const changeFilter = (e) => {
@@ -42,6 +42,17 @@ const Products = ({ show, showSorting, setPag }) => {
     });
   };
 
+  const clearFilters = () => {
+    const filterItems = Object.keys(filters)
+    const stateObject = {...filters}
+    for(let item of filterItems){
+        stateObject[item] = false
+    }
+    setFilters({
+      ...stateObject
+    })
+  }
+
   useEffect(() => {
     let items = [...state],
     i = 0,
@@ -55,7 +66,9 @@ const Products = ({ show, showSorting, setPag }) => {
         }
 
         if(!newArr.length && i === 7) {
-         newArr = [...state]
+          // eslint-disable-next-line no-unused-vars
+          let filterCheck = Object.entries(filters).some((array) => array[1] === true ) ? null : newArr = [...state]
+
         }
 
       if (filters[val].length > 5) {
@@ -153,7 +166,7 @@ const Products = ({ show, showSorting, setPag }) => {
           ))}
         </div>
         <div className="reset">
-          <button className="clear" onClick={(e) => showSorting(e)}>
+          <button className="clear" onClick={(e) => {showSorting(e); clearFilters()}}>
             Clear
           </button>
           <button className="save" onClick={(e) => showSorting(e)}>
