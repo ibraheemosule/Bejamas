@@ -60,15 +60,17 @@ const Header = () => {
               ""
             )}
             <hr className="line" />
-            <button
-              className="cart-btn"
-              onClick={() => {
-                setCartItems([]);
-                display("none");
-              }}
-            >
-              CLEAR
-            </button>
+            {cartItems.length > 0 && (
+              <button
+                className="cart-btn"
+                onClick={() => {
+                  setCartItems([]);
+                  display("none");
+                }}
+              >
+                CLEAR
+              </button>
+            )}
           </div>
         </div>
       </nav>

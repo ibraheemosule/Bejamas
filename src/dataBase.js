@@ -117,13 +117,13 @@ export const products = [
     details: null,
   },
   {
-    name: "Man",
+    name: "Mana",
     category: "people",
     price: 100,
     currency: "USD",
     image: {
       src: "https://images.pexels.com/photos/698170/pexels-photo-698170.jpeg?auto=compress&cs=tinysrgb&h=350",
-      alt: "man",
+      alt: "mana",
     },
     bestseller: false,
     featured: false,

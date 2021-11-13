@@ -7,9 +7,8 @@ import { Context } from "../Context";
 
 const Hero = () => {
   const [, , cartItems, setCartItems, , , , product] = useContext(Context);
-
+  const cartNames = [...cartItems].map((val) => val.name);
   const addItem = () => {
-    const cartNames = [...cartItems].map((val) => val.name);
     const itemName = product[4].name;
     if (!cartNames.includes(itemName)) {
       setCartItems([...cartItems, product[4]]);
@@ -24,7 +23,9 @@ const Hero = () => {
         <div className="caption">Photo of the Day</div>
       </div>
       <button className="cart-btn" onClick={addItem}>
-        ADD TO CART
+        {cartNames.includes(product[4].name)
+          ? "REMOVE FROM CART"
+          : "ADD TO CART"}
       </button>
       <section className="about">
         <div className="about__pet">

@@ -9,9 +9,10 @@
     margin-bottom: 0;
   }
 }
-
+@include min800 {
 .hovered {
   animation: show 0.5s;
+}
 }
 .product {
   margin: 3rem -0.5em;
