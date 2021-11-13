@@ -66,9 +66,7 @@ const Products = ({ show, showSorting, setPag }) => {
 
       if (!newArr.length && i === 7) {
         // eslint-disable-next-line no-unused-vars
-        let filterCheck = Object.entries(filters).some(
-          (array) => array[1] === true
-        )
+        let filterCheck = Object.values(filters).some((value) => value === true)
           ? null
           : (newArr = [...state]);
       }
