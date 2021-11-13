@@ -31,10 +31,11 @@ const ProductCard = ({ index, val }) => {
     }
   };
 
+  const cartNames = [...cartItems].map((val) => val.name);
+
   const addItem = () => {
     let items = [...state];
-    const itemName = button.current.id,
-      cartNames = [...cartItems].map((val) => val.name);
+    const itemName = button.current.id;
     setClickCount(() => clickCount + 1);
 
     if (clickCount % 2 === 0) {
@@ -63,7 +64,7 @@ const ProductCard = ({ index, val }) => {
           onClick={addItem}
           id={val.name}
         >
-          {clickCount % 2 === 1 ? "REMOVE FROM CART" : "ADD TO CART"}
+          {cartNames.includes(val.name) ? "REMOVE FROM CART" : "ADD TO CART"}
         </button>
       </div>
 

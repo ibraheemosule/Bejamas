@@ -15,7 +15,13 @@ const Products = ({ show, showSorting, setPag }) => {
       "cities",
       "nature",
     ],
-    radios = ["lower than $20", "$20 - $100", "$100 - $200", "more than $200"];
+    radios = [
+      "lower than $20",
+      "$20 - $100",
+      "$100 - $200",
+      "more than $200",
+      "all prices",
+    ];
 
   let [filters, setFilters] = useState({
     people: false,
@@ -103,6 +109,7 @@ const Products = ({ show, showSorting, setPag }) => {
             break;
 
           default:
+            newArr = [...newArr];
         }
       }
 
@@ -152,6 +159,7 @@ const Products = ({ show, showSorting, setPag }) => {
               id={i}
               value={val}
               onChange={(e) => changeFilter(e)}
+              className="checkbox"
             />
             <span className="checkmark"></span>
           </label>
@@ -168,6 +176,7 @@ const Products = ({ show, showSorting, setPag }) => {
                 value={val}
                 name="price"
                 onChange={(e) => priceFilter(e)}
+                className="checkbox"
               />
               <span className="checkmark"></span>
             </label>
