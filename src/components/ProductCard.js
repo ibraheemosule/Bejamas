@@ -5,8 +5,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 const ProductCard = ({ index, val }) => {
   const [state, , cartItems, setCartItems] = useContext(Context),
     button = useRef(null),
-    [width, setWidth] = useState(window.innerWidth),
-    [clickCount, setClickCount] = useState(0);
+    [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     if (width < 800) {
@@ -36,13 +35,9 @@ const ProductCard = ({ index, val }) => {
   const addItem = () => {
     let items = [...state];
     const itemName = button.current.id;
-    setClickCount(() => clickCount + 1);
-
-    if (clickCount % 2 === 0) {
-      items = items.filter((item) => item.name === itemName);
-      if (!cartNames.includes(itemName)) {
-        setCartItems([...cartItems, ...items]);
-      }
+    items = items.filter((item) => item.name === itemName);
+    if (!cartNames.includes(itemName)) {
+      setCartItems([...cartItems, ...items]);
     } else {
       items = [...cartItems].filter((item) => item.name !== itemName);
       setCartItems([...items]);
